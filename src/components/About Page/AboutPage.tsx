@@ -75,45 +75,6 @@ const AboutPage: React.FC = () => {
               </div>
             </div>  
 
-            {/* Experience Section */}
-            <div className="w-[85%] Avegas-Royale-Regular uppercase text-xl sm500:text-2xl sm500 mt-4 ml-[4%]">
-              Experience
-            </div>
-            <div className="w-[85%] flex flex-col gap-4 text-xs leading-5 sm500:text-sm sm500:leading-7">
-{/*               <div className="flex flex-col">
-                <div className="font-medium leading-5 text-sm sm500:text-base">
-              
-                </div>
-                <div className="text-xs mb-2">Oct 2024 - Jun 2025</div>
-                <div className="opacity-75 mb-2">
-  
-                </div>
-                <div>
-                  Role - <span className="opacity-75">Front-end Developer</span>
-                </div>
-                <div>
-                  Responsibilities -{" "}
-                  <span className="opacity-75">
-                    Web Development / Structure & Design / Research &
-                    Optimization / SEO Optimization
-                  </span>
-                </div>
-                <div>
-                  GitHub -{" "}
-                  <span className="opacity-75">github.com/freeCodeCamp</span>
-                </div>
-                <div>
-                  URL - <span className="opacity-75">freecodecamp.org</span>
-                </div>
-              </div> */}
-              <div className="flex flex-col">
-                <div className="font-medium leading-5 text-sm sm500:text-base">
-                  Freelancing
-                </div>
-                <div className="text-xs mb-2">Feb 2024 -  Current</div>
-              </div>
-            </div>
-
             {/* Education Section */}
             <div className="w-[85%] Avegas-Royale-Regular uppercase text-xl sm500:text-2xl sm500 ml-[4%]">
               Education
@@ -124,22 +85,25 @@ const AboutPage: React.FC = () => {
                  Form Free Cooding Camp
                 </div>
                 <div className="opacity-75">
-                 Full-Stack Web Developer Certificate
+                 Fronted Developement
                 </div>
-                <div className="text-xs">Feb 2024</div>
+                <div className="text-xs">Feb 2023</div>
               </div>
 
+                 <div className="w-[85%] flex flex-col gap-4 text-xs leading-5 sm500:text-sm sm500:leading-7">
               <div className="flex flex-col">
                 <div className="font-medium leading-5 text-sm sm500:text-base">
-                  UI Designer Certificate <br />
+                 Form Udemy & Coursera
                 </div>
-                <div className="text-xs">Nov 2023</div>
+                <div className="opacity-75">
+                Backend Development 
+                </div>
+                <div className="text-xs">Sep 2024</div>
               </div>
-            </div>
-
+  
             {/* Contact Link */}
             <Link
-              to="mailto:alexvulov123@gmail.com"
+              to="mailto:1xcoder@proton.me"
               onMouseOver={mouseOverEvent}
               onMouseOut={mouseOutEvent}
               className="w-auto py-2 px-10 bg-[#1a1818] text-[#ece7e1] Avegas-Royale-Regular text-[3vw] md:text-[1.5vw] text-center rounded-full hover:opacity-50 duration-300 ease-in-out"
