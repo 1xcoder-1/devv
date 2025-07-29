@@ -55,19 +55,22 @@ const AboutPage: React.FC = () => {
                   React, TypeScript, JavaScript, HTML, CSS, Tailwind
                 </div>
                 <div>
-                  <span className="font-medium">Back-End & Services:</span>{" "}
+                  <span className="font-medium">Back-End Development:</span>{" "}
                   Python, Node.js, Firebase, Express, REST API
                 </div>
-                <span className="font-medium">App Development:</span>{" "}
-                  React Native, Electron
+
+                  <div>
+                  <span className="font-medium">App Development:</span>{" "}
+                  React Native, Expo, Electron
+                </div>
                 </div>
                 <div>
-                  <span className="font-medium">Design & Tools:</span> 
+                  <span className="font-medium">Design & Tools: </span> 
                   Figma, Framer
                 </div>
                 <div>
-                  <span className="font-medium">Version Control:</span>
-                  GitHub, GIt, GitLab
+                  <span className="font-medium">Version Control: </span> 
+                   GitHub, GIt, GitLab
                 </div>
                 <div>
                 <div>
@@ -113,6 +116,8 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
