@@ -30,7 +30,7 @@ const Loader: React.FC = () => {
       <div style={{
         alignSelf: 'flex-end',
         padding: '24px',
-        fontSize: '12rem',
+        fontSize: '1rem',
         fontWeight: 600,
         opacity: 0.9,
       }}>{percent}%</div>
