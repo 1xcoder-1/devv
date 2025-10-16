@@ -1,46 +1,135 @@
-# Getting Started with Create React App
+# Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, animated portfolio website built with React, TypeScript, and Three.js. This project showcases creative work with smooth animations, 3D graphics, and responsive design.
 
-## Available Scripts
+## 🌟 Features
 
-In the project directory, you can run:
+- **Smooth Animations**: Powered by Framer Motion and Lottie for engaging user experience
+- **3D Graphics**: Interactive 3D elements using Three.js and React Three Fiber
+- **Responsive Design**: Fully responsive layout that works on all device sizes
+- **Modern UI**: Clean, minimalist design with custom cursor interactions
+- **Client-Side Routing**: Navigation between different portfolio sections
+- **Loading Animations**: Custom loader with progress animation
+- **Dark/Light Mode**: Adaptive color schemes for different sections
 
-### `npm start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend**: React 19, TypeScript
+- **Styling**: Tailwind CSS, PostCSS, Autoprefixer
+- **Animations**: Framer Motion, Lottie React
+- **3D Graphics**: Three.js, React Three Fiber, React Three Drei
+- **Routing**: React Router DOM v7
+- **Device Detection**: React Device Detect
+- **Testing**: Jest, React Testing Library
+- **Build Tool**: Create React App (Webpack)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📁 Project Structure
 
-### `npm test`
+```
+src/
+├── components/
+│   ├── About Page/       # About section components
+│   ├── ContactPage/      # Contact form and animations
+│   ├── Home Page/        # Home page components
+│   ├── Projects/         # Individual project pages
+│   ├── Work Page/        # Work experience section
+│   ├── Cursor.tsx        # Custom cursor component
+│   ├── Loader.tsx        # Loading screen component
+│   └── Navigation.tsx    # Navigation bar
+├── context/
+│   └── CursorContext.tsx # Context for cursor interactions
+├── hooks/
+│   └── useDimension.tsx  # Custom hook for window dimensions
+├── routes/
+│   ├── About.tsx         # About page route
+│   ├── ArtConnection.tsx # ArtConnection project route
+│   ├── Contact.tsx       # Contact page route
+│   ├── CryptoBase.tsx    # CryptoBase project route
+│   ├── Home.tsx          # Home page route
+│   ├── NotFound.tsx      # 404 page route
+│   ├── Wonder.tsx        # Wonder project route
+│   └── Work.tsx          # Work page route
+├── App.tsx               # Main application component
+└── index.tsx             # Entry point
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v14 or higher)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-### `npm run eject`
+2. Navigate to the project directory:
+   ```bash
+   cd devv-main
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Available Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `npm start` - Runs the app in development mode at http://localhost:3000
+- `npm test` - Launches the test runner in interactive watch mode
+- `npm run build` - Builds the app for production to the `build` folder
+- `npm run eject` - Removes the single build dependency (irreversible)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🎨 Key Components
 
-## Learn More
+### Custom Cursor
+Interactive custom cursor that changes based on user interactions and context.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Loader
+Animated loading screen with progress indicator that appears during initial page load.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Navigation
+Dynamic navigation that adapts based on the current page, with external links to social profiles.
+
+### Animations
+All pages feature custom animations using Framer Motion for smooth transitions and engaging interactions.
+
+## 📱 Responsive Design
+
+The website is fully responsive with custom breakpoints:
+- sm350: 350px
+- sm500: 500px
+- sm: 640px
+- md: 768px
+- lg: 1024px
+- xl1100: 1100px
+- xl: 1280px
+- xxl: 1500px
+
+## 🧪 Testing
+
+The project includes unit tests using React Testing Library and Jest. Run tests with:
+```bash
+npm test
+```
+
+## 📦 Deployment
+
+Build the project for production:
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `build/` directory, ready for deployment to any static hosting service.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+
+## 👤 Author
+
+Created with ❤️ by [1xcoder](https://github.com/1xcoder-1)
