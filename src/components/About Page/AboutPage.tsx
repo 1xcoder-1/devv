@@ -35,14 +35,12 @@ const AboutPage: React.FC = () => {
 
             {/* Personal Background */}
             <div className="w-[85%] text-xs leading-5 sm500:text-sm sm500:leading-7 mt-4">
-              
-            I'm a passionate full-stack developer with a love for building intuitive and dynamic web applications. I specialize in creating clean, efficient code and enjoy solving complex problems to deliver seamless user experiences
+              I'm a passionate full-stack developer with a love for building intuitive and dynamic web applications. I specialize in creating clean, efficient code and enjoy solving complex problems to deliver seamless user experiences
             </div>
 
             {/* Professional Passion */}
             <div className="w-[85%] text-xs leading-5 sm500:text-sm sm500:leading-7">
-            My journey into coding began when I built a simple website for a friend's band. I was hooked by the process of turning an idea into a functional, live product. Since then, I’ve dedicated myself to mastering modern web technologies to create powerful digital solutions.
-
+              My journey into coding began when I built a simple website for a friend's band. I was hooked by the process of turning an idea into a functional, live product. Since then, I’ve dedicated myself to mastering modern web technologies to create powerful digital solutions.
             </div>
 
             {/* Skills Section */}
@@ -51,82 +49,165 @@ const AboutPage: React.FC = () => {
             </div>
             <div className="w-[85%] text-xs leading-5 sm500:text-sm sm500:leading-7">
               <div className="flex flex-col gap-2">
-                <div className="font-semibold text-base mt-2 mb-1">Languages & Frameworks</div>
+                <div className="font-semibold text-base mt-2 mb-1">🖥️ Front-End & UI</div>
                 <div>
-                  <span className="font-medium">Front-End: </span> JavaScript (ES6+), React, Nextjs, Typescript
+                  <span className="font-medium">Core: </span> Next.js, TypeScript (Building Full Stack Apps with Static Typing and SSR/SSG).
                 </div>
                 <div>
-                  <span className="font-medium">Back-End & Server-Side: </span> Python, Node.js, Express, Flask, Rest Api
+                  <span className="font-medium">React Ecosystem: </span> React.js (Building Dynamic, Component-Based User Interfaces).
                 </div>
                 <div>
-                  <span className="font-medium">App Development:</span> Streamlit (for data-driven web apps), Electron.js (for cross-platform desktop apps)
-                </div>
-                <div className="font-semibold text-base mt-4 mb-1">Cloud & DevOps</div>
-                <div>
-                  <span className="font-medium">Cloud Platforms: </span> AWS ( knowledge of services like EC2, S3, and Amplify)
+                  <span className="font-medium">Modern Alternatives: </span> Preact, Astro
                 </div>
                 <div>
-                  <span className="font-medium">Databases: </span> MySQL, PostgreSQL, MongoDB
+                  <span className="font-medium">Styling: </span> Tailwind CSS, MUI, Chakra UI, Bootstrap, ShadCN
+                </div>
+
+                <div className="font-semibold text-base mt-4 mb-1">⚙️ Back-End & Data</div>
+                <div>
+                  <span className="font-medium">APIs: </span> Node.js, Express.js, Bunjs.
                 </div>
                 <div>
-                  <span className="font-medium">Other Languages & Tools: </span> C Language, Git, GitHub, Docker, Vercel, Superbase , Firebase
+                  <span className="font-medium"> Databases: </span> PostgreSQL, MySQL, MongoDB, Redis.
+                </div>
+                <div>
+                  <span className="font-medium">Database Providers: </span> Firebase, Supabase, NeonDB, Appwrite
+                </div>
+                <div>
+                  <span className="font-medium">ORMs: </span> Prisma, Drizzle ORM.
+                </div>
+
+                <div className="font-semibold text-base mt-4 mb-1">☁️ Cloud & AI Integration</div>
+                <div>
+                  <span className="font-medium">Cloud Platforms: </span> AWS (Experience Deploying, Hosting, and Scaling Applications on the Cloud).
+                </div>
+                <div>
+                  <span className="font-medium">AI Integration: </span> Experience Integrating SDKs and APIs from Gemini, GPT, and other Providers to Build Intelligent Features.
+                </div>
+
+                <div className="font-semibold text-base mt-4 mb-1">🛠️ DevOps & Performance</div>
+                <div>
+                  <span className="font-medium">Version Control: </span> Git, GitHub, GitLab (Expertise in Collaboration and Code Management).
+                </div>
+                <div>
+                  <span className="font-medium">Containerization: </span> Docker (Ensuring Consistent Application Environments).
+                </div>
+                <div>
+                  <span className="font-medium">Deployment: </span> Vercel, Netlify, Heroku.
+                </div>
+                <div>
+                  <span className="font-medium">Build Tools: </span> Vite, Webpack, ESBuild, Turbopack
+                </div>
+
+                <div className="font-semibold text-base mt-4 mb-1">🧪 Testing & Other Tools</div>
+                <div>
+                  <span className="font-medium">Testing: </span> Jest, Cypress, React Testing Library
+                </div>
+                <div>
+                  <span className="font-medium">Code Quality: </span> Prettier, Eslint (Maintaining Consistent Code Style Across Projects).
+                </div>
+                <div>
+                  <span className="font-medium">Design: </span> Figma, Canva, .
+                </div>
+                <div>
+                  <span className="font-medium">Desktop: </span> Electron.js (Developing Cross-Platform Desktop Applications).
                 </div>
               </div>
             </div>
 
-            {/* Education Section */}
-            <div className="w-[85%] Avegas-Royale-Regular uppercase text-xl sm500:text-2xl sm500 ml-[4%]">
-             Relevant Education & Self-Study
+            {/* Certificates Section (Replaces old Education) */}
+            {/* Certificates Section */}
+            <div className="w-[85%] Avegas-Royale-Regular uppercase text-xl sm500:text-2xl sm500 ml-[4%] mt-8 mb-4">
+              Certificates
             </div>
-            <div className="w-[85%] flex flex-col gap-4 text-xs leading-5 sm500:text-sm sm500:leading-7">
-              <div className="flex flex-col">
-                <div className="font-medium leading-5 text-sm sm500:text-base">
-                 Form Free Cooding Camp
-                </div>
-                <div className="opacity-75">
-                 Fronted Developement
-                </div>
-                <div className="text-xs">Feb 2023</div>
-              </div>
+            <div className="w-[85%] grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  issuer: "FreeCodeCamp",
+                  title: "Legacy Frontend",
+                  image: "/Legacy Frontend.png",
+                },
+                {
+                  issuer: "Simple Learn",
+                  title: "Frontend Developer",
+                  image: "/fronted Developer_page-0001.jpg",
+                },
+                {
+                  issuer: "FreeCodeCamp",
+                  title: "Legacy Backend",
+                  image: "/Legacy Backend.png",
+                },
+                {
+                  issuer: "FreeCodeCamp",
+                  title: "Back End Development and APIs",
+                  image: "/Back End Development and APIs V8.png",
+                },
+                {
+                  issuer: "One Roadmap",
+                  title: "Full Stack Developer",
+                  image: "/Full Stack Developer-Certificate_page-0001.jpg",
+                },
+                {
+                  issuer: "One Roadmap",
+                  title: "TypeScript",
+                  image: "/TypeScript-Certificate_page-0001.jpg",
+                },
+              ].map((cert, index) => (
+                <div
+                  key={index}
+                  className="group relative flex flex-col justify-between p-4 rounded-2xl bg-[#e3ded8] border border-black/5 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-default overflow-hidden"
+                  onMouseOver={mouseOverEvent}
+                  onMouseOut={mouseOutEvent}
+                >
+                  <div className="flex flex-col gap-1 mb-4">
+                    <div className="text-[10px] uppercase tracking-wider opacity-60 font-semibold text-black">
+                      {cert.issuer}
+                    </div>
+                    <div className="text-xl leading-tight font-medium text-black/90 group-hover:text-black transition-colors line-clamp-2">
+                      {cert.title}
+                    </div>
+                  </div>
 
-<div className="flex flex-col">
-                <div className="font-medium leading-5 text-sm sm500:text-base">
-                 From Coursera & Free Cooding Camp
+                  <div className="flex items-center justify-end border-t border-black/5 pt-3 mt-auto">
+                    <a
+                      href={cert.image}
+                      download={`${cert.title.replace(/\s+/g, '-').toLowerCase()}.png`}
+                      className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full bg-black/5 hover:bg-black hover:text-white transition-all duration-300 group/btn"
+                      title="Download Certificate"
+                    >
+                      <span>Download</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-3.5 h-3.5 group-hover/btn:translate-y-0.5 transition-transform duration-300"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" x2="12" y1="15" y2="3" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-                <div className="opacity-75">
-                 Python Developement
-                </div>
-                <div className="text-xs">Dec 2024</div>
-              </div>
-              
-                 <div className="w-[85%] flex flex-col gap-4 text-xs leading-5 sm500:text-sm sm500:leading-7">
-              <div className="flex flex-col">
-                <div className="font-medium leading-5 text-sm sm500:text-base">
-                 Form Udemy & Free Cooding Camp
-                </div>
-                <div className="opacity-75">
-                Backend Development 
-                </div>
-                <div className="text-xs">Sep 2024</div>
-              </div>
-              
-            
-  
-  
+              ))}
+            </div>
+
             {/* Contact Link */}
             <Link
               to="mailto:1xcoder@proton.me"
               onMouseOver={mouseOverEvent}
               onMouseOut={mouseOutEvent}
-              className="w-auto py-2 px-10 bg-[#1a1818] text-[#ece7e1] Avegas-Royale-Regular text-[3vw] md:text-[1.5vw] text-center rounded-full hover:opacity-50 duration-300 ease-in-out"
+              className="w-auto py-2 px-10 bg-[#1a1818] text-[#ece7e1] Avegas-Royale-Regular text-[3vw] md:text-[1.5vw] text-center rounded-full hover:opacity-50 duration-300 ease-in-out mt-4"
             >
               Contact Me
             </Link>
           </div>
         </div>
       </div>
-    </div>
-    </div>
     </div>
   );
 };
