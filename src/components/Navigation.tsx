@@ -15,7 +15,9 @@ const Navigation: React.FC = () => {
 
   // Determine text color based on the current route
   const textColorClass =
-    location.pathname === "/work" || location.pathname === "/contact"
+    location.pathname === "/work" ||
+      location.pathname === "/contact" ||
+      location.pathname === "/about"
       ? "text-[#ece7e1]"
       : "";
 
@@ -27,8 +29,8 @@ const Navigation: React.FC = () => {
           {/* Home or Work link based on the current route */}
           <div className="md:w-16 md:mb-8 ml-8 md:ml-0 mr-8 md:mr-16 md:pt-16 md:-rotate-90">
             {location.pathname === "/art-connection" ||
-            location.pathname === "/wonder" ||
-            location.pathname === "/crypto-base" ? (
+              location.pathname === "/wonder" ||
+              location.pathname === "/crypto-base" ? (
               <Link
                 to="/work"
                 onMouseOver={mouseOverEvent}
@@ -51,11 +53,12 @@ const Navigation: React.FC = () => {
 
           {/* Vertical divider */}
           <div
-            className={`${
-              location.pathname === "/work" || location.pathname === "/contact"
+            className={`${location.pathname === "/work" ||
+                location.pathname === "/contact" ||
+                location.pathname === "/about"
                 ? "bg-[#ece7e1]"
                 : "bg-[#1a1818]"
-            } w-0 sm350:w-12 sm500:w-24 md:w-[1px] h-[1px] md:h-24 -mt-1 md:mt-2 md:mb-20 opacity-75`}
+              } w-0 sm350:w-12 sm500:w-24 md:w-[1px] h-[1px] md:h-24 -mt-1 md:mt-2 md:mb-20 opacity-75`}
           ></div>
 
           {/* Year display */}
@@ -121,8 +124,9 @@ const Navigation: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

@@ -13,11 +13,15 @@ const Cursor: React.FC = () => {
   // Determine the cursor image based on the current location and cursor type
   const getCursorImage = () => {
     if (cursor === "default") {
-      return location.pathname === "/work" || location.pathname === "/contact"
+      return location.pathname === "/work" ||
+        location.pathname === "/contact" ||
+        location.pathname === "/about"
         ? "./cursorDefaultColored.png"
         : "./cursorDefault.png";
     } else {
-      return location.pathname === "/work" || location.pathname === "/contact"
+      return location.pathname === "/work" ||
+        location.pathname === "/contact" ||
+        location.pathname === "/about"
         ? "./cursorPointerColored.png"
         : "./cursorPointer.png";
     }

@@ -6,7 +6,7 @@ import { useCursorContext } from "../../context/CursorContext";
 
 const ContactPage: React.FC = () => {
   const { mouseOverEvent, mouseOutEvent } = useCursorContext();
-  
+
   // State for responsive decoration positioning
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
@@ -21,7 +21,7 @@ const ContactPage: React.FC = () => {
         height: window.innerHeight,
       });
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -32,11 +32,11 @@ const ContactPage: React.FC = () => {
       {/* Circle Element */}
       <m.div
         initial={{ opacity: 0, scale: 0 }}
-        animate={{ 
-          opacity: [0, 0.9, 0.7], 
+        animate={{
+          opacity: [0, 0.9, 0.7],
           scale: [0, 1, 0.9],
           x: [0, -10, 0],
-          y: [0, 10, 0] 
+          y: [0, 10, 0]
         }}
         transition={{
           duration: 8,
@@ -51,15 +51,15 @@ const ContactPage: React.FC = () => {
           zIndex: 10,
         }}
       />
-      
+
       {/* Square Element */}
       <m.div
         initial={{ opacity: 0, rotate: 0 }}
-        animate={{ 
-          opacity: [0, 0.8, 0.6], 
+        animate={{
+          opacity: [0, 0.8, 0.6],
           rotate: [0, 45, 0],
           x: [0, 15, 0],
-          y: [0, -15, 0] 
+          y: [0, -15, 0]
         }}
         transition={{
           duration: 12,
@@ -74,14 +74,14 @@ const ContactPage: React.FC = () => {
           zIndex: 10,
         }}
       />
-      
 
-      
+
+
       {/* Dot Grid Element */}
       <m.div
         initial={{ opacity: 0 }}
-        animate={{ 
-          opacity: [0, 0.8, 0.6] 
+        animate={{
+          opacity: [0, 0.8, 0.6]
         }}
         transition={{
           duration: 6,
@@ -143,33 +143,60 @@ const ContactPage: React.FC = () => {
                   transition={{ duration: 1.5, delay: 1.5, repeat: 0 }}
                   className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-[#ece7e130] to-transparent z-10"
                 />
-                Need a Full-Stack Developer who is eager to bring creativity and
-                dedication to a dynamic organisation? Get in touch.
+                Need a Full-Stack Developer who is eager to bring creativity and dedication to a dynamic organisation? Get in touch.
               </m.div>
 
               {/* Contact Details */}
-              <div className="text-[12px] leading-5 sm500:text-[14px] sm500:leading-7 flex flex-col gap-2">
-                <div className="flex gap-2">
-                  <span>Email:</span>
+              <div className="text-[12px] leading-5 sm500:text-[14px] sm500:leading-7 flex flex-col gap-2 font-light">
+                <div className="flex flex-wrap gap-x-2 items-center">
+                  <span className="opacity-80">Email:</span>
                   <Link
                     to="mailto:1xcoder@proton.me"
                     onMouseOver={mouseOverEvent}
                     onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-4 underline-[#ece7e194] hover:text-[#ece7e1] hover:tracking-wide transition-all duration-300 ease-in-out"
+                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
                   >
                     1xcoder@proton.me
                   </Link>
                 </div>
-                <div className="flex gap-2">
-                  <span>On the Internet:</span>
+                <div className="flex flex-row items-center gap-x-2 whitespace-nowrap flex-nowrap">
+                  <span className="opacity-80">On the Internet:</span>
                   <Link
                     to="https://www.linkedin.com/in/1xcoder/"
                     target="_blank"
                     onMouseOver={mouseOverEvent}
                     onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-2 underline-[#ece7e194] hover:text-[#ece7e1] hover:tracking-wide transition-all duration-300 ease-in-out"
+                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
                   >
                     LinkedIn
+                  </Link>
+                  <span className="opacity-40">/</span>
+                  <Link
+                    to="https://www.instagram.com/1x.coder/"
+                    onMouseOver={mouseOverEvent}
+                    onMouseOut={mouseOutEvent}
+                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
+                  >
+                    Instagram
+                  </Link>
+                  <span className="opacity-40">/</span>
+                  <Link
+                    to="https://www.threads.com/@1x.coder"
+                    onMouseOver={mouseOverEvent}
+                    onMouseOut={mouseOutEvent}
+                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
+                  >
+                    Threads
+                  </Link>
+                  <span className="opacity-40">/</span>
+                  <Link
+                    to="https://github.com/1xcoder-1"
+                    target="_blank"
+                    onMouseOver={mouseOverEvent}
+                    onMouseOut={mouseOutEvent}
+                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
+                  >
+                    Github
                   </Link>
                 </div>
               </div>
