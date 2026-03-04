@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Cursor from "./components/Cursor";

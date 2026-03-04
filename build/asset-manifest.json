@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.74b2e048.css",
+    "main.js": "/static/js/main.05483b85.js",
+    "static/media/Avegas-Royale-Bold-Italic.ttf": "/static/media/Avegas-Royale-Bold-Italic.9d52272fc5aceccb0da0.ttf",
+    "static/media/Avegas-Royale-Italic.ttf": "/static/media/Avegas-Royale-Italic.400e9aa6f6ca5efd1ec3.ttf",
+    "static/media/Avegas-Royale-Bold.ttf": "/static/media/Avegas-Royale-Bold.51b1cffd966f01a2220e.ttf",
+    "static/media/Avegas-Royale-Regular.ttf": "/static/media/Avegas-Royale-Regular.7f6b97202305371577a7.ttf",
+    "index.html": "/index.html",
+    "main.74b2e048.css.map": "/static/css/main.74b2e048.css.map",
+    "main.05483b85.js.map": "/static/js/main.05483b85.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.74b2e048.css",
+    "static/js/main.05483b85.js"
+  ]
+}

@@ -1,12 +1,10 @@
 import { motion as m } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
-import { useCursorContext } from "../../context/CursorContext";
 import TiltLink from "./TiltLink";
 import Marquee from "./Marquee";
 
 const HomePage: React.FC = () => {
-  const { mouseOverEvent, mouseOutEvent } = useCursorContext();
+
 
   return (
     <div className="w-full min-h-screen flex flex-col xl1100:flex-row pt-28 md:pt-60 xl1100:pt-0 justify-start xl1100:justify-between items-center gap-2 sm500:gap-4 md:gap-12 xl1100:gap-20 px-8 md:px-20">
