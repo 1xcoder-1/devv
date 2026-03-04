@@ -1,7 +1,9 @@
 import { AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Cursor from "./components/Cursor";
+import Grain from "./components/Grain";
 import Navigation from "./components/Navigation";
 import CursorContextProvider from "./context/CursorContext";
 import Loader from "./components/Loader";
@@ -14,24 +16,18 @@ import NotFound from "./routes/NotFound";
 import Wonder from "./routes/Wonder";
 import Work from "./routes/Work";
 
-
 function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate loading duration (match Loader's 0-100%)
-    const timer = setTimeout(() => setLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
   if (loading) {
-    return <Loader />;
+    return <Loader onComplete={() => setLoading(false)} />;
   }
 
   return (
-    <>
+    <HelmetProvider>
       <CursorContextProvider>
+        <Grain />
         <Cursor />
         <Navigation />
         <AnimatePresence initial={true}>
@@ -47,7 +43,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </CursorContextProvider>
-    </>
+    </HelmetProvider>
   );
 }
 

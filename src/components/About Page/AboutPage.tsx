@@ -10,36 +10,68 @@ const AboutPage: React.FC = () => {
     <div className="relative w-full min-h-screen bg-[#1a1818] text-[#ece7e1] flex flex-col items-center pt-28 pb-20 px-6 md:px-0 overflow-x-hidden select-text">
       <div className="w-full max-w-[900px] flex flex-col items-start gap-12 md:ml-20 lg:ml-40 xl:ml-0">
         {/* About Header */}
-        <div className="overflow-hidden w-full">
+        <div className="overflow-hidden w-full relative">
           <m.div
-            initial={{ transform: "translateY(100%)" }}
-            animate={{ transform: "translateY(0%)" }}
-            transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.8 }}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.5 }}
             className="Avegas-Royale-Regular text-[25vw] sm:text-[20vw] md:text-[180px] leading-[0.8] mt-10 -ml-1 md:-ml-2"
           >
             About
           </m.div>
+          {/* Subtle line reveal */}
+          <m.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            className="h-[1px] w-full bg-[#ece7e120] origin-left mt-4"
+          />
         </div>
 
-        {/* Subheader */}
-        <div className="Avegas-Royale-Regular text-3xl md:text-[42px] leading-[1.2] max-w-[600px] mt-4">
-          I'm Abdullah. A programmer, developer and problem solver.
+        {/* Subheader with Staggered Words */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1">
+          {"I'm Abdullah. A programmer, developer and problem solver.".split(" ").map((word, i) => (
+            <div key={i} className="overflow-hidden">
+              <m.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.76, 0, 0.24, 1],
+                  delay: 0.8 + (i * 0.05)
+                }}
+                className="block Avegas-Royale-Regular text-3xl md:text-[42px] leading-[1.2]"
+              >
+                {word}
+              </m.span>
+            </div>
+          ))}
         </div>
 
         {/* Body Text */}
         <div className="flex flex-col gap-10 text-[15px] md:text-[17px] leading-[1.8] opacity-90 max-w-[750px] font-light">
-          <p>
-            I am a developer and designer who loves building things that work. Whether it’s designing a clean interface or writing the code behind it, I enjoy the entire process of creating digital products from scratch.
-          </p>
-          <p>
-            I specialize in turning big ideas into simple, high-performing websites. Whether it's a small landing page or a complex application, I focus on making it fast, beautiful, and easy for everyone to use.
-          </p>
-          <p>
-            I believe great software comes from understanding what the user needs, choosing the right tech stack, and constantly improving the product. I’m always learning, always building, and always looking for the next challenge in web development and design.
-          </p>
-          <p className="mt-4 italic opacity-70 border-t pt-6 border-[#ece7e1]/10">
+          {[
+            "I am a developer and designer who loves building things that work. Whether it’s designing a clean interface or writing the code behind it, I enjoy the entire process of creating digital products from scratch.",
+            "I specialize in turning big ideas into simple, high-performing websites. Whether it's a small landing page or a complex application, I focus on making it fast, beautiful, and easy for everyone to use.",
+            "I believe great software comes from understanding what the user needs, choosing the right tech stack, and constantly improving the product. I’m always learning, always building, and always looking for the next challenge in web development and design."
+          ].map((para, i) => (
+            <m.p
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 0.9, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 + (i * 0.2), ease: "easeOut" }}
+            >
+              {para}
+            </m.p>
+          ))}
+          <m.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            transition={{ duration: 1, delay: 1.8 }}
+            className="mt-4 italic border-t pt-6 border-[#ece7e1]/10"
+          >
             This is one of my favorite quotes (by Steve Jobs):
-          </p>
+          </m.p>
         </div>
 
         {/* Quote Section */}

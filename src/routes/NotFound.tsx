@@ -24,7 +24,7 @@ const NotFoundAnimation: React.FC = () => {
         transition={{
           duration: 1,
           delay: 0.1,
-          ease: "ease",
+          ease: "easeInOut",
         }}
         className="absolute top-0 left-0 w-full h-full bg-[#1a1818] z-50"
       />
@@ -65,21 +65,21 @@ const NotFoundPage: React.FC = () => {
       }
     `;
     document.head.appendChild(style);
-    
+
     return () => {
       document.head.removeChild(style);
     };
   }, []);
 
   return (
-    <div 
+    <div
       className="w-full h-screen flex items-center justify-center p-4 overflow-hidden relative"
       style={{ backgroundColor: '#ECE7E1' }}
     >
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
-        
+
         {/* Detective Illustration */}
-        <motion.div 
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
@@ -96,7 +96,7 @@ const NotFoundPage: React.FC = () => {
                   <div className="absolute top-2 left-2 w-2 h-2 bg-yellow-200 rounded-full opacity-60" />
                   <div className="absolute top-4 right-2 w-1 h-1 bg-yellow-200 rounded-full opacity-50" />
                 </div>
-                
+
                 {/* Stars */}
                 <div className="absolute top-6 left-8 w-1 h-1 bg-yellow-200 rounded-full animate-twinkle" />
                 <div className="absolute top-12 left-16 w-1 h-1 bg-yellow-200 rounded-full animate-twinkle" style={{ animationDelay: '1s' }} />
@@ -104,13 +104,13 @@ const NotFoundPage: React.FC = () => {
                 <div className="absolute top-20 left-12 w-1 h-1 bg-yellow-200 rounded-full animate-twinkle" style={{ animationDelay: '1.5s' }} />
                 <div className="absolute top-24 right-16 w-1 h-1 bg-yellow-200 rounded-full animate-twinkle" style={{ animationDelay: '0.8s' }} />
                 <div className="absolute top-28 left-20 w-1 h-1 bg-yellow-200 rounded-full animate-twinkle" style={{ animationDelay: '2s' }} />
-                
+
                 {/* Plus-shaped stars */}
                 <div className="absolute top-10 left-20 text-yellow-200 text-xs animate-twinkle" style={{ animationDelay: '0.3s' }}>+</div>
                 <div className="absolute top-18 right-24 text-yellow-200 text-xs animate-twinkle" style={{ animationDelay: '1.2s' }}>+</div>
                 <div className="absolute top-22 left-14 text-yellow-200 text-xs animate-twinkle" style={{ animationDelay: '1.8s' }}>+</div>
               </div>
-              
+
               {/* Detective character */}
               <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-detective">
                 {/* Detective body */}
@@ -120,31 +120,31 @@ const NotFoundPage: React.FC = () => {
                     {/* Hat - detective style */}
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-22 h-10 bg-gray-800 rounded-t-full" />
                     <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-26 h-4 bg-gray-800 rounded-full" />
-                    
+
                     {/* Face features */}
                     <div className="absolute top-5 left-4 w-2 h-2 bg-gray-800 rounded-full" /> {/* Left eye */}
                     <div className="absolute top-5 right-4 w-2 h-2 bg-gray-800 rounded-full" /> {/* Right eye */}
                     <div className="absolute top-9 left-1/2 transform -translate-x-1/2 w-1 h-3 bg-orange-300 rounded-full" /> {/* Nose */}
-                    
+
                     {/* Mustache - more detailed */}
                     <div className="absolute top-11 left-1/2 transform -translate-x-1/2 w-7 h-2 bg-gray-700 rounded-full" />
-                    
+
                     {/* Mouth line */}
                     <div className="absolute top-13 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-gray-600" />
                   </div>
-                  
+
                   {/* Body - brown coat with better styling */}
                   <div className="w-24 h-32 bg-red-800 mx-auto relative rounded-t-3xl">
                     {/* Coat lapels */}
                     <div className="absolute top-2 left-2 w-6 h-12 bg-red-900 transform rotate-12 rounded-tl-2xl" />
                     <div className="absolute top-2 right-2 w-6 h-12 bg-red-900 transform -rotate-12 rounded-tr-2xl" />
-                    
+
                     {/* Coat buttons - vertical line */}
                     <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-yellow-600 rounded-full" />
                     <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-yellow-600 rounded-full" />
                     <div className="absolute top-14 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-yellow-600 rounded-full" />
                     <div className="absolute top-18 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-yellow-600 rounded-full" />
-                    
+
                     {/* Left arm with magnifying glass - better positioning */}
                     <div className="absolute top-8 -left-6 w-4 h-16 bg-red-800 rounded-full transform rotate-15" />
                     {/* Hand holding magnifying glass */}
@@ -152,7 +152,7 @@ const NotFoundPage: React.FC = () => {
                     {/* Magnifying glass */}
                     <div className="absolute top-2 -left-12 w-8 h-8 border-3 border-yellow-600 rounded-full bg-blue-100 opacity-80" />
                     <div className="absolute top-0 -left-10 w-2 h-10 bg-yellow-700 rounded-full transform rotate-45" />
-                    
+
                     {/* Right arm with briefcase */}
                     <div className="absolute top-10 -right-6 w-4 h-14 bg-red-800 rounded-full transform -rotate-15" />
                     {/* Hand */}
@@ -162,22 +162,22 @@ const NotFoundPage: React.FC = () => {
                     <div className="absolute top-21 right-1 w-1 h-1 bg-yellow-900 rounded-full" />
                     {/* Briefcase handle */}
                     <div className="absolute top-19 right-0 w-2 h-2 border-t-2 border-yellow-800 rounded-t-full" />
-                    
+
                     {/* Coat details - pockets */}
                     <div className="absolute top-16 left-4 w-4 h-3 bg-red-900 rounded border border-red-700" />
                     <div className="absolute top-16 right-4 w-4 h-3 bg-red-900 rounded border border-red-700" />
-                    
+
                     {/* Belt */}
                     <div className="absolute bottom-4 left-0 right-0 h-2 bg-gray-800" />
                     <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-3 h-1 bg-yellow-600 rounded" />
                   </div>
-                  
+
                   {/* Legs - better proportioned */}
                   <div className="flex justify-center gap-3 mt-1">
                     <div className="w-4 h-12 bg-gray-800 rounded-full" />
                     <div className="w-4 h-12 bg-gray-800 rounded-full" />
                   </div>
-                  
+
                   {/* Feet - dress shoes */}
                   <div className="flex justify-center gap-3 mt-1">
                     <div className="w-6 h-3 bg-gray-900 rounded-full" />
@@ -185,7 +185,7 @@ const NotFoundPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Ground area with more detail */}
               <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-yellow-600 to-yellow-500" />
               {/* Ground texture dots */}
@@ -195,16 +195,16 @@ const NotFoundPage: React.FC = () => {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Content */}
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
           className="text-center lg:text-left max-w-md"
         >
           {/* 404 Title */}
-          <motion.h1 
+          <motion.h1
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.6 }}
@@ -212,9 +212,9 @@ const NotFoundPage: React.FC = () => {
           >
             404
           </motion.h1>
-          
+
           {/* Main message */}
-          <motion.div 
+          <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.3, duration: 0.6 }}
@@ -230,9 +230,9 @@ const NotFoundPage: React.FC = () => {
               man is on the case.
             </p>
           </motion.div>
-          
+
           {/* Secondary message */}
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.6 }}
@@ -240,15 +240,15 @@ const NotFoundPage: React.FC = () => {
           >
             Meanwhile, why don't try again by going
           </motion.p>
-          
+
           {/* Back Home Button */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.7, duration: 0.6 }}
           >
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-block px-8 py-4 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
             >
               BACK HOME

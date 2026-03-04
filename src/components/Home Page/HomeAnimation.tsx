@@ -23,7 +23,7 @@ const HomeAnimation: React.FC = () => {
         transition={{
           duration: 1,
           delay: 0.1,
-          ease: "ease",
+          ease: "easeInOut",
         }}
         className="absolute top-0 left-0 w-full h-full bg-[#1a1818] z-50"
       ></m.div>

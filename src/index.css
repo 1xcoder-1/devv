@@ -54,7 +54,17 @@
   cursor: none;
 }
 
-p, span, h1, h2, h3, h4, h5, h6, a, li, blockquote {
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li,
+blockquote {
   cursor: auto;
 }
 
@@ -69,10 +79,12 @@ body {
   background: #1a1818;
   color: #ece7e1;
 }
+
 ::-webkit-selection {
   background: #1a1818;
   color: #ece7e1;
 }
+
 ::selection {
   background: #1a1818;
   color: #ece7e1;
@@ -91,4 +103,16 @@ body {
   width: 15px;
   height: 15px;
   display: none;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1.5px #ece7e1;
+  color: rgba(236, 231, 225, 0.05);
+  transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  text-shadow: 0 0 10px rgba(236, 231, 225, 0.1);
+}
+
+.text-outline:hover {
+  color: #ece7e1;
+  -webkit-text-stroke: 1.5px transparent;
 }

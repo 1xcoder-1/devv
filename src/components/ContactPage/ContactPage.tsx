@@ -1,209 +1,178 @@
-import { motion as m } from "framer-motion";
+import { motion as m, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useCursorContext } from "../../context/CursorContext";
+import Magnetic from "../Magnetic";
 
 
 const ContactPage: React.FC = () => {
   const { mouseOverEvent, mouseOutEvent } = useCursorContext();
+  const [copied, setCopied] = useState(false);
+  const [time, setTime] = useState("");
 
-  // State for responsive decoration positioning
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0,
-  });
-
-  // Update window dimensions on resize
+  // Update Pakistan time every second
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+    const updateTime = () => {
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: 'Asia/Karachi',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+      setTime(new Intl.DateTimeFormat('en-US', options).format(now));
     };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
   }, []);
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("1xcoder@proton.me");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="bg-[#1a1818] text-[#ece7e1] w-full h-screen flex justify-start items-start md:items-center pt-28 md:pt-0 px-8 md:px-20 relative overflow-hidden">
-      {/* Floating Decoration Elements */}
-      {/* Circle Element */}
-      <m.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{
-          opacity: [0, 0.9, 0.7],
-          scale: [0, 1, 0.9],
-          x: [0, -10, 0],
-          y: [0, 10, 0]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 1.5,
-        }}
-        className="absolute w-[20vw] h-[20vw] sm:w-[15vw] sm:h-[15vw] md:w-[10vw] md:h-[10vw] rounded-full border-2 border-[#ece7e170] block"
-        style={{
-          top: windowSize.width > 768 ? '20%' : '10%',
-          right: windowSize.width > 768 ? '15%' : '5%',
-          zIndex: 10,
-        }}
-      />
-
-      {/* Square Element */}
-      <m.div
-        initial={{ opacity: 0, rotate: 0 }}
-        animate={{
-          opacity: [0, 0.8, 0.6],
-          rotate: [0, 45, 0],
-          x: [0, 15, 0],
-          y: [0, -15, 0]
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 2,
-        }}
-        className="absolute w-[12vw] h-[12vw] sm:w-[8vw] sm:h-[8vw] md:w-[5vw] md:h-[5vw] border-2 border-[#ece7e170] block"
-        style={{
-          bottom: windowSize.width > 768 ? '25%' : '15%',
-          right: windowSize.width > 768 ? '30%' : '10%',
-          zIndex: 10,
-        }}
-      />
-
-
-
-      {/* Dot Grid Element */}
+    <div className="bg-[#1a1818] text-[#ece7e1] w-full min-h-screen flex flex-col justify-center items-center px-8 md:px-20 py-20 relative overflow-hidden">
+      {/* Decorative Background Elements */}
       <m.div
         initial={{ opacity: 0 }}
-        animate={{
-          opacity: [0, 0.8, 0.6]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 2.5,
-        }}
-        className="absolute grid grid-cols-3 gap-[5px] md:gap-[8px] grid"
-        style={{
-          bottom: windowSize.width > 768 ? '15%' : '5%',
-          left: windowSize.width > 768 ? '15%' : '5%',
-          zIndex: 10,
-        }}
+        animate={{ opacity: 0.03 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40vw] font-bold Avegas-Royale-Regular pointer-events-none select-none"
       >
-        {[...Array(9)].map((_, index) => (
-          <div key={index} className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full bg-[#ece7e190]" />
-        ))}
+        Contact
       </m.div>
-      {/* Main Content Wrapper */}
-      <div className="w-full xl1100:w-[50%] h-auto xl1100:h-full flex justify-start md:justify-center xl1100:justify-end items-end xl1100:items-center">
-        {/* Text Section */}
-        <div className="w-full sm350:w-3/4 h-auto flex flex-col justify-center items-start gap-4">
-          {/* Animated Greeting */}
-          <div className="overflow-hidden sm:-ml-1 mb-8 sm500:mb-4 xl1100:-mb-[10%]">
-            <m.div
-              initial={{ transform: "translateY(100%)" }}
-              animate={{ transform: "translateY(0%)" }}
-              transition={{
-                duration: 0.5,
-                delay: 1,
-              }}
-              className="text-[19vw] sm500:text-[21vw] md:text-[16vw] xl1100:text-[14vw] Avegas-Royale-Regular"
+
+      {/* Main Layout Grid */}
+      <div className="w-full max-w-7xl grid grid-cols-1 xl1100:grid-cols-2 gap-20 relative z-10">
+
+        {/* Left Section: Large Heading & Status */}
+        <div className="flex flex-col justify-center gap-12">
+          <div className="overflow-hidden">
+            <m.h1
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+              className="text-[18vw] sm:text-[12vw] xl1100:text-[9.8vw] Avegas-Royale-Regular leading-[0.8]"
             >
-              Hello.
-            </m.div>
+              Let's <br />
+              <span className=" Avegas-Royale-Regular pl-4 sm:pl-10 text-outline">Connect.</span>
+            </m.h1>
           </div>
 
-          {/* Contact Information */}
-          <div className="overflow-hidden xl1100:pt-10 -mt-10 relative z-30 bg-[#1a1818]">
-            <m.div
-              initial={{ transform: "translateY(100%)" }}
-              animate={{ transform: "translateY(0%)" }}
-              transition={{
-                duration: 0.5,
-                delay: 0.75,
-              }}
-              className="w-full sm:w-[85%] flex flex-col gap-4"
-            >
-              {/* Introduction Text - with fade-in animation, left border and highlight effect */}
-              <m.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-                className="text-[12px] leading-5 sm500:text-[14px] sm500:leading-7 relative pl-3 border-l-2 border-[#ece7e194] overflow-hidden"
+          <m.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col gap-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-[1px] bg-[#ece7e150]"></div>
+              <p className="text-[10px] uppercase tracking-[0.3em] opacity-50">Local Time / Pakistan</p>
+            </div>
+            <p className="text-4xl sm:text-6xl font-light tracking-tighter Avegas-Royale-Regular">{time}</p>
+          </m.div>
+        </div>
+
+        {/* Right Section: Contact Methods */}
+        <div className="flex flex-col justify-center gap-16 xl1100:pl-20">
+
+          {/* Email Card/Button */}
+          <div className="group relative">
+            <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-6 font-medium">Drop a line</p>
+            <Magnetic>
+              <div
+                onClick={copyToClipboard}
+                onMouseOver={mouseOverEvent}
+                onMouseOut={mouseOutEvent}
+                className="cursor-pointer relative overflow-hidden"
               >
-                <m.div
-                  initial={{ left: "-100%" }}
-                  animate={{ left: "100%" }}
-                  transition={{ duration: 1.5, delay: 1.5, repeat: 0 }}
-                  className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-[#ece7e130] to-transparent z-10"
-                />
-                Need a Full-Stack Developer who is eager to bring creativity and dedication to a dynamic organisation? Get in touch.
-              </m.div>
-
-              {/* Contact Details */}
-              <div className="text-[12px] leading-5 sm500:text-[14px] sm500:leading-7 flex flex-col gap-2 font-light">
-                <div className="flex flex-wrap gap-x-2 items-center">
-                  <span className="opacity-80">Email:</span>
-                  <Link
-                    to="mailto:1xcoder@proton.me"
-                    onMouseOver={mouseOverEvent}
-                    onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
-                  >
-                    1xcoder@proton.me
-                  </Link>
-                </div>
-                <div className="flex flex-row items-center gap-x-2 whitespace-nowrap flex-nowrap">
-                  <span className="opacity-80">On the Internet:</span>
-                  <Link
-                    to="https://www.linkedin.com/in/1xcoder/"
-                    target="_blank"
-                    onMouseOver={mouseOverEvent}
-                    onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
-                  >
-                    LinkedIn
-                  </Link>
-                  <span className="opacity-40">/</span>
-                  <Link
-                    to="https://www.instagram.com/1x.coder/"
-                    onMouseOver={mouseOverEvent}
-                    onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
-                  >
-                    Instagram
-                  </Link>
-                  <span className="opacity-40">/</span>
-                  <Link
-                    to="https://www.threads.com/@1x.coder"
-                    onMouseOver={mouseOverEvent}
-                    onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
-                  >
-                    Threads
-                  </Link>
-                  <span className="opacity-40">/</span>
-                  <Link
-                    to="https://github.com/1xcoder-1"
-                    target="_blank"
-                    onMouseOver={mouseOverEvent}
-                    onMouseOut={mouseOutEvent}
-                    className="underline underline-offset-[6px] decoration-[1px] hover:opacity-60 transition-all duration-300 ease-in-out"
-                  >
-                    Github
-                  </Link>
-                </div>
+                <h2 className="text-3xl sm:text-5xl md:text-5xl font-light tracking-tight hover:opacity-70 transition-opacity underline decoration-[1px] underline-offset-8">
+                  1xcoder@proton.me
+                </h2>
+                <AnimatePresence>
+                  {copied && (
+                    <m.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute -top-10 left-0 text-xs font-medium uppercase tracking-[0.2em] text-green-400"
+                    >
+                      Copied!
+                    </m.span>
+                  )}
+                </AnimatePresence>
               </div>
-            </m.div>
+            </Magnetic>
           </div>
+
+          {/* Social Links List */}
+          <div className="flex flex-col gap-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 font-medium">Digital Presence</p>
+            <div className="grid grid-cols-2 gap-8">
+              {[
+                { name: "LinkedIn", url: "https://www.linkedin.com/in/1xcoder/" },
+                { name: "GitHub", url: "https://github.com/1xcoder-1" },
+                { name: "Instagram", url: "https://www.instagram.com/1x.coder/" },
+                { name: "Threads", url: "https://www.threads.com/@1x.coder" }
+              ].map((social, i) => (
+                <m.div
+                  key={social.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 + (i * 0.1) }}
+                >
+                  <Magnetic>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseOver={mouseOverEvent}
+                      onMouseOut={mouseOutEvent}
+                      className="text-lg sm:text-2xl font-light hover:opacity-50 transition-all flex items-center gap-3"
+                    >
+                      <span className="text-[10px] opacity-30">0{i + 1}</span>
+                      {social.name}
+                    </a>
+                  </Magnetic>
+                </m.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <m.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ delay: 1.5 }}
+            className="text-sm font-light leading-relaxed max-w-md pt-10 border-t border-[#ece7e110]"
+          >
+            I’m always open to discussing new projects, creative ideas or original opportunities to be part of your visions.
+          </m.p>
+
         </div>
       </div>
+
+      {/* Subtle Floating Shapes */}
+      <m.div
+        animate={{
+          rotate: 360,
+          x: [0, 50, 0],
+          y: [0, -30, 0]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="fixed -top-20 -right-20 w-80 h-80 rounded-full border border-[#ece7e105] pointer-events-none"
+      />
+      <m.div
+        animate={{
+          rotate: -360,
+          x: [0, -50, 0],
+          y: [0, 50, 0]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="fixed -bottom-40 -left-20 w-[40rem] h-[40rem] rounded-full border border-[#ece7e108] pointer-events-none"
+      />
     </div>
   );
 };
