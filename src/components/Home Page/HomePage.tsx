@@ -4,10 +4,8 @@ import TiltLink from "./TiltLink";
 import Marquee from "./Marquee";
 
 const HomePage: React.FC = () => {
-
-
   return (
-    <div className="w-full min-h-screen flex flex-col xl1100:flex-row pt-28 md:pt-60 xl1100:pt-0 justify-start xl1100:justify-between items-center gap-2 sm500:gap-4 md:gap-12 xl1100:gap-20 px-8 md:px-20">
+    <div className="w-full h-screen overflow-hidden flex flex-col xl1100:flex-row pt-20 md:pt-32 xl1100:pt-0 justify-start xl1100:justify-between items-center gap-2 sm500:gap-4 md:gap-8 xl1100:gap-20 px-8 md:px-20">
       {/* Left section with name and titles */}
       <div className="w-full xl1100:w-[35%] h-auto xl1100:h-full flex justify-start md:justify-center xl1100:justify-end items-end xl1100:items-center mb-4 xl1100:mb-20">
         <div className="w-full sm350:w-3/4 h-auto flex flex-col justify-center items-start gap-4 mt-0 xl1100:mt-[45%]">
@@ -70,9 +68,9 @@ const HomePage: React.FC = () => {
         }}
         className="w-full xl1100:w-[55%] h-auto xl1100:h-full flex justify-center items-start xl1100:items-center mt-8 md:mt-20 xl1100:mt-0"
       >
-        <div className="w-full md:w-3/4 xl1100:w-full flex flex-col justify-center items-start pl-2 sm500:pl-4 md:pl-0 xl:pl-20">
+        <div className="w-full md:w-3/4 xl1100:w-full flex flex-col justify-center items-start pr-5">
           {/* Navigation link to "Work" */}
-          <div className="uppercase text-[16vw] sm500:text-[18vw] md:text-[13vw] xl1100:text-[11vw] tracking-tighter -mb-[3%] sm500:-mb-[5%] md:-mb-[10%] -ml-[-3%]">
+          <div className="uppercase text-[14vw] sm500:text-[16vw] md:text-[11vw] xl1100:text-[9vw] tracking-tighter -mb-[3%] sm500:-mb-[5%] md:-mb-[10%]">
             <TiltLink
               to="/work"
               title="Work"
@@ -82,7 +80,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Navigation link to "About" */}
-          <div className="uppercase text-[16vw] sm500:text-[18vw] md:text-[13vw] xl1100:text-[11vw] tracking-tighter -mb-[3%] sm500:-mb-[5%] md:-mb-[10%] -ml-[-3%]">
+          <div className="uppercase text-[14vw] sm500:text-[16vw] md:text-[11vw] xl1100:text-[9vw] tracking-tighter -mb-[3%] sm500:-mb-[5%] md:-mb-[10%]">
             <TiltLink
               to="/about"
               title="About"
@@ -92,7 +90,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Navigation link to "Contact" */}
-          <div className="uppercase text-[16vw] sm500:text-[18vw] md:text-[13vw] xl1100:text-[11vw] tracking-tighter -ml-[-3%]">
+          <div className="uppercase text-[14vw] sm500:text-[16vw] md:text-[11vw] xl1100:text-[9vw] tracking-tighter">
             <TiltLink
               to="/contact"
               title="Contact"
@@ -104,17 +102,8 @@ const HomePage: React.FC = () => {
       </m.div>
 
       {/* Mobile-only background marquee to fill empty space */}
-      <Marquee />
-
-      {/* Mobile-only status bar for an attractive finish */}
-      <div className="xl1100:hidden w-full px-8 pb-10 flex flex-col gap-4 mt-auto">
-        <div className="w-full h-[1px] bg-black/10"></div>
-        <div className="flex justify-center items-center text-[10px] uppercase font-medium tracking-widest opacity-50">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            Based in Pakistan
-          </div>
-        </div>
+      <div className="md:hidden">
+        <Marquee />
       </div>
     </div>
   );
