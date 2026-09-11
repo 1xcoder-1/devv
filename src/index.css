@@ -45,15 +45,11 @@
 }
 
 /* Basic Configurations */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  scroll-behavior: smooth;
-  cursor: none;
-}
-
+*,
+*::before,
+*::after,
+html,
+body,
 p,
 span,
 h1,
@@ -63,15 +59,40 @@ h4,
 h5,
 h6,
 a,
+button,
+input,
+textarea,
+select,
 li,
-blockquote {
-  cursor: auto;
+blockquote,
+div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
+  cursor: none !important;
 }
 
 body {
   overflow-x: hidden;
   background-color: #ece7e1;
   color: #1a1818;
+}
+
+/* Hide scrollbars globally across browsers while maintaining smooth scrolling */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+*,
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Highlighted / On Selection Styles */
@@ -115,4 +136,47 @@ body {
 .text-outline:hover {
   color: #ece7e1;
   -webkit-text-stroke: 1.5px transparent;
+}
+
+/* Apple Handwriting Loader Styles */
+.font-handwriting {
+  font-family: "Alex Brush", "Caveat", "Sacramento", cursive;
+}
+
+.font-caveat {
+  font-family: "Caveat", cursive;
+}
+
+.font-sacramento {
+  font-family: "Sacramento", cursive;
+}
+
+@keyframes applePulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1) translate(-50%, -50%);
+  }
+
+  50% {
+    opacity: 0.65;
+    transform: scale(1.15) translate(-50%, -50%);
+  }
+}
+
+.apple-glow-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236, 231, 225, 0.15) 0%, rgba(200, 190, 180, 0.05) 45%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(50px);
+  transform: translate(-50%, -50%);
+  animation: applePulse 6s ease-in-out infinite;
+  pointer-events: none;
 }

@@ -6,83 +6,96 @@ interface LoaderProps {
   onComplete?: () => void;
 }
 
+interface Greeting {
+  text: string;
+  fontClass?: string;
+}
+
+const GREETINGS: Greeting[] = [
+  { text: "hello", fontClass: "font-handwriting" },
+  { text: "bonjour", fontClass: "font-sacramento" },
+  { text: "hola", fontClass: "font-handwriting" },
+  { text: "你好", fontClass: "font-sans font-extralight tracking-widest" },
+  { text: "안녕", fontClass: "font-sans font-extralight tracking-widest" },
+  { text: "سلام", fontClass: "font-serif font-light" },
+  { text: "welcome", fontClass: "font-handwriting" },
+];
+
 const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
-  const [percent, setPercent] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (percent < 100) {
-      // Variable speed for a more "organic" feel
-      const delay = percent < 80 ? 15 : percent < 95 ? 40 : 80;
-      interval = setTimeout(() => setPercent(prev => prev + 1), delay);
+    if (index < GREETINGS.length - 1) {
+      // Luxurious display time per word so every greeting sits gracefully on screen
+      const delay = index === 0 ? 1050 : index === GREETINGS.length - 2 ? 1000 : 950;
+      const timer = setTimeout(() => {
+        setIndex(prev => prev + 1);
+      }, delay);
+      return () => clearTimeout(timer);
     } else {
-      // Short pause at 100% before reveal
-      setTimeout(() => {
-        setIsComplete(true);
+      // Hold "welcome" before triggering page reveal
+      const timer = setTimeout(() => {
         if (onComplete) onComplete();
-      }, 500);
+      }, 1200);
+      return () => clearTimeout(timer);
     }
-    return () => clearTimeout(interval);
-  }, [percent, onComplete]);
+  }, [index, onComplete]);
 
-  const words = ["Dreaming", "Crafting", "Designing", "Developing", "Presenting"];
-  const currentWord = words[Math.floor((percent / 100) * words.length)];
+  const currentGreeting = GREETINGS[index];
+  const progressPercent = Math.min(100, Math.round(((index + 1) / GREETINGS.length) * 100));
 
   return (
-    <AnimatePresence>
-      {!isComplete && (
-        <motion.div
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[10000] bg-[#1a1818] flex flex-col justify-center items-center overflow-hidden"
-        >
-          <Grain />
+    <motion.div
+      initial={{ y: "0%" }}
+      exit={{ y: "-100%" }}
+      transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+      className="fixed inset-0 z-[10000] bg-[#141414] text-[#ece7e1] flex flex-col justify-center items-center overflow-hidden select-none shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+    >
+      <Grain />
 
-          {/* Centered Percentage with Premium Font */}
-          <div className="relative overflow-hidden">
-            <motion.span
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              className="block text-[25vw] sm:text-[20vw] font-bold Avegas-Royale-Regular text-[#ece7e1] leading-none select-none"
-            >
-              {percent}%
-            </motion.span>
-          </div>
+      {/* Apple Setup Ambient Radial Glow */}
+      <div className="apple-glow-orb" />
 
-          {/* Dynamic Status Text */}
-          <div className="mt-4 overflow-hidden h-6 flex flex-col items-center">
-            <motion.p
-              key={currentWord}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 0.4 }}
-              exit={{ y: -20, opacity: 0 }}
-              className="text-[10px] uppercase tracking-[0.3em] text-[#ece7e1] font-medium"
-            >
-              {currentWord}
-            </motion.p>
-          </div>
-
-          {/* Minimalist Progress Bar */}
-          <div className="fixed bottom-0 left-0 w-full h-[2px] bg-[#ece7e110]">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${percent}%` }}
-              transition={{ ease: "easeOut" }}
-              className="h-full bg-[#ece7e1]"
-            />
-          </div>
-
-          {/* Stylized Reveal Panels (Pre-positioned) */}
+      {/* Apple Handwriting / Multilingual Greetings Container */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 sm:px-12 min-h-[280px]">
+        <AnimatePresence mode="wait">
           <motion.div
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: percent / 100 }}
-            className="fixed top-0 left-0 w-full h-screen bg-[#ece7e1] origin-bottom -z-10 opacity-[0.02]"
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+            key={currentGreeting.text}
+            initial={{ opacity: 0, y: 22, scale: 0.93, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -22, scale: 1.06, filter: "blur(12px)" }}
+            transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center text-center w-full max-w-[95vw]"
+          >
+            {/* Handwriting Text Container with No Edge Crop */}
+            <div className="relative py-4 px-6 sm:px-12 flex justify-center items-center w-full overflow-visible">
+              <span
+                className={`block text-[28vw] sm:text-[22vw] md:text-[16vw] lg:text-[13vw] xl:text-[11vw] font-normal leading-tight tracking-normal text-[#ece7e1] drop-shadow-[0_4px_24px_rgba(236,231,225,0.22)] whitespace-nowrap overflow-visible ${currentGreeting.fontClass || 'font-handwriting'}`}
+                style={{
+                  WebkitTextStroke: "0.5px rgba(236, 231, 225, 0.4)",
+                }}
+              >
+                {currentGreeting.text}
+              </span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Minimalist Apple Setup Progress Bar */}
+      <div className="fixed bottom-0 left-0 w-full h-[3px] bg-[#ece7e112] z-20">
+        <motion.div
+          animate={{ width: `${progressPercent}%` }}
+          transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6 }}
+          className="h-full bg-[#ece7e1] shadow-[0_0_10px_rgba(236,231,225,0.7)]"
+        />
+      </div>
+
+
+    </motion.div>
   );
 };
 
 export default Loader;
+
+

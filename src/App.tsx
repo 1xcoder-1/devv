@@ -20,13 +20,13 @@ function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
-  if (loading) {
-    return <Loader onComplete={() => setLoading(false)} />;
-  }
-
   return (
     <HelmetProvider>
       <CursorContextProvider>
+        <AnimatePresence mode="wait">
+          {loading && <Loader key="apple-loader" onComplete={() => setLoading(false)} />}
+        </AnimatePresence>
+
         <Grain />
         <Cursor />
         <Navigation />
