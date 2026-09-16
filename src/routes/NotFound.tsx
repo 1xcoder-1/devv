@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import SEO from '../components/SEO';
 
 const NotFoundAnimation: React.FC = () => {
   return (
@@ -263,6 +264,11 @@ const NotFoundPage: React.FC = () => {
 const NotFound: React.FC = () => {
   return (
     <div className="z-30 relative">
+      <SEO
+        title="404 - Page Not Found | Abdullah's Portfolio"
+        description="The page you are looking for does not exist."
+        noindex={true}
+      />
       <NotFoundAnimation />
       <NotFoundPage />
     </div>

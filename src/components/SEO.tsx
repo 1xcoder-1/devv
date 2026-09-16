@@ -8,6 +8,8 @@ interface SEOProps {
     type?: string;
     keywords?: string;
     canonical?: string;
+    ogImage?: string;
+    noindex?: boolean;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -16,8 +18,23 @@ const SEO: React.FC<SEOProps> = ({
     name = "Abdullah",
     type = "website",
     keywords = "Abdullah, Full-Stack Developer, Web Developer, MERN Stack, React Developer, Node.js Expert, Portfolio, Pakistan Developer",
-    canonical = "https://1xcoder.me" // Assuming a professional domain
+    canonical = "https://1xcoder.me",
+    ogImage = "https://1xcoder.me/fullstackdev.png",
+    noindex = false,
 }) => {
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": type === "article" ? "Article" : "WebPage",
+        "name": title,
+        "description": description,
+        "url": canonical,
+        "author": {
+            "@type": "Person",
+            "name": name,
+            "url": "https://1xcoder.me"
+        }
+    };
+
     return (
         <Helmet>
             {/* Standard Metadata */}
@@ -26,19 +43,34 @@ const SEO: React.FC<SEOProps> = ({
             <meta name="keywords" content={keywords} />
             <link rel="canonical" href={canonical} />
 
+            {/* Robots Indexing Control */}
+            {noindex ? (
+                <meta name="robots" content="noindex, follow" />
+            ) : (
+                <meta name="robots" content="index, follow" />
+            )}
+
             {/* Facebook / Open Graph tags */}
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:site_name" content={name} />
             <meta property="og:url" content={canonical} />
-            <meta property="og:image" content="https://1xcoder.me/og-image.png" /> {/* Recommended: create an OG image */}
+            <meta property="og:image" content={ogImage} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
 
             {/* Twitter tags */}
             <meta name="twitter:creator" content={name} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content={ogImage} />
+
+            {/* JSON-LD Schema Markup */}
+            <script type="application/ld+json">
+                {JSON.stringify(schemaData)}
+            </script>
         </Helmet>
     );
 };

@@ -101,7 +101,9 @@ const CryptoBasePage: React.FC = () => {
         <div className="w-full sm500:w-[85%] md:w-[65%] h-[18.5rem] sm350:h-[20rem] sm500:h-[25rem] sm:h-[25rem] lg:h-[30rem] xl1100:h-[40rem] xxl:h-[50rem] rounded-[1vw] overflow-hidden">
           <img
             src="./cryptobaseMockup.jpg"
-            alt=""
+            alt="CryptoBase Mockup"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover animate-panImage2 hover:scale-150 sm500:hover:scale-125 duration-300 ease-in-out"
           />
         </div>

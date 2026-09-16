@@ -166,6 +166,12 @@ const fadeUpVariant = {
 
 const AboutPage: React.FC = () => {
   const { mouseOverEvent, mouseOutEvent } = useCursorContext();
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const filterCategories = ["All", ...SKILL_CATEGORIES.map(c => c.title)];
+  const displayedCategories = selectedCategory === "All"
+    ? SKILL_CATEGORIES
+    : SKILL_CATEGORIES.filter(c => c.title === selectedCategory);
 
   return (
     <div className="relative w-full min-h-screen bg-[#1a1818] text-[#ece7e1] flex flex-col items-center pt-28 pb-24 px-6 md:px-0 overflow-x-hidden select-text">
@@ -397,22 +403,42 @@ const AboutPage: React.FC = () => {
           custom={0.1}
           className="flex flex-col gap-6 sm:gap-8 w-full pt-4 sm:pt-10"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-3 sm:px-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-3 sm:px-0">
             <h3 className="Avegas-Royale-Regular text-3xl sm:text-4xl text-[#ece7e1]">
               Skills & Tech Stack
             </h3>
 
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2">
+              {filterCategories.map((catName) => {
+                const isActive = selectedCategory === catName;
+                return (
+                  <button
+                    key={catName}
+                    onClick={() => setSelectedCategory(catName)}
+                    onMouseOver={mouseOverEvent}
+                    onMouseOut={mouseOutEvent}
+                    className={`px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs rounded-full border transition-all duration-300 select-none ${isActive
+                      ? "bg-[#ece7e1] text-[#1a1818] font-semibold border-[#ece7e1] shadow-[0_0_12px_rgba(236,231,225,0.3)]"
+                      : "bg-[#ece7e1]/[0.04] text-[#ece7e1]/70 border-[#ece7e1]/15 hover:border-[#ece7e1]/40 hover:text-[#ece7e1]"
+                      }`}
+                  >
+                    {catName}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className="flex flex-col divide-y divide-[#ece7e1]/10 border-t border-b border-[#ece7e1]/10">
-            {SKILL_CATEGORIES.map((cat, idx) => (
+            {displayedCategories.map((cat, idx) => (
               <div
                 key={idx}
                 className="py-6 flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-8 hover:bg-[#ece7e1]/[0.015] px-2 rounded-xl transition-colors duration-300"
               >
                 <div className="w-56 flex-shrink-0 flex items-center gap-2.5 pt-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#ece7e1]/50" />
-                  <span className="text-[14px]  tracking-[0.1em] text-[#ece7e1]/70 font-normal">
+                  <span className="text-[14px] tracking-[0.1em] text-[#ece7e1]/70 font-normal">
                     {cat.title}
                   </span>
                 </div>

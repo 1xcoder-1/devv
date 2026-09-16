@@ -153,7 +153,9 @@ const WonderPage: React.FC = () => {
         <div className="w-full sm500:w-[85%] md:w-[65%] h-[12.5rem] sm350:h-[15rem] sm500:h-[20rem] sm:h-[25rem] lg:h-[30rem] xl1100:h-[40rem] xxl:h-[50rem] rounded-[1vw] overflow-hidden">
           <img
             src="./wonderMockup.jpg"
-            alt=""
+            alt="Wonder App Mockup"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover animate-panImage hover:scale-125 duration-300 ease-in-out"
           />
         </div>
